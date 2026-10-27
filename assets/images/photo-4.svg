@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="100%" height="100%">
+  <defs>
+    <linearGradient id="roseGrad4" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2D0A13"/>
+      <stop offset="50%" stop-color="#5C1D2E"/>
+      <stop offset="100%" stop-color="#3A0815"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="1000" fill="url(#roseGrad4)"/>
+
+  <!-- Stylized Rose Bouquet -->
+  <g transform="translate(400, 500)">
+    <!-- Stems -->
+    <path d="M-20,120 Q0,50 0,0" stroke="#2D5A27" stroke-width="5" fill="none"/>
+    <path d="M0,120 Q-10,60 -30,10" stroke="#2D5A27" stroke-width="4" fill="none"/>
+    <path d="M20,120 Q10,60 35,15" stroke="#2D5A27" stroke-width="4" fill="none"/>
+    <path d="M-10,120 Q15,60 50,30" stroke="#2D5A27" stroke-width="4" fill="none"/>
+
+    <!-- Central Grand Rose -->
+    <circle cx="0" cy="-30" r="60" fill="#801D38"/>
+    <circle cx="0" cy="-30" r="45" fill="#A8284B"/>
+    <circle cx="0" cy="-30" r="30" fill="#D13B63"/>
+    <circle cx="0" cy="-30" r="18" fill="#F06286"/>
+    <circle cx="0" cy="-30" r="8" fill="#FFF0F5"/>
+
+    <!-- Surrounding Roses -->
+    <circle cx="-50" cy="10" r="40" fill="#801D38"/>
+    <circle cx="-50" cy="10" r="28" fill="#A8284B"/>
+    <circle cx="-50" cy="10" r="14" fill="#D13B63"/>
+
+    <circle cx="50" cy="15" r="42" fill="#801D38"/>
+    <circle cx="50" cy="15" r="30" fill="#A8284B"/>
+    <circle cx="50" cy="15" r="15" fill="#D13B63"/>
+
+    <!-- Golden Ribbon -->
+    <path d="M-40,100 Q0,120 40,100 Q20,150 0,160 Q-20,150 -40,100 Z" fill="#D4AF37"/>
+  </g>
+
+  <text x="400" y="780" font-family="'Playfair Display', Georgia, serif" font-size="32" font-style="italic" fill="#FDFBF7" text-anchor="middle">
+    « Des fleurs à l'image de ta beauté »
+  </text>
+  <text x="400" y="825" font-family="'Montserrat', sans-serif" font-size="14" fill="#E8A598" text-anchor="middle" letter-spacing="4">
+    ROSES ÉTERNELLES POUR MON AMOUR
+  </text>
+</svg>

@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="100%" height="100%">
+  <defs>
+    <linearGradient id="skyGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1F070E"/>
+      <stop offset="40%" stop-color="#3D0C1A"/>
+      <stop offset="80%" stop-color="#5C1D2E"/>
+      <stop offset="100%" stop-color="#8B263E"/>
+    </linearGradient>
+    <radialGradient id="candleGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFF9E6" stop-opacity="1"/>
+      <stop offset="30%" stop-color="#F3E5AB" stop-opacity="0.9"/>
+      <stop offset="60%" stop-color="#D4AF37" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#D4AF37" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="1000" fill="url(#skyGrad2)"/>
+
+  <!-- Candlelit romantic table setting -->
+  <ellipse cx="400" cy="720" rx="300" ry="80" fill="#2A0813"/>
+  <ellipse cx="400" cy="710" rx="280" ry="70" fill="#3D0C1A" stroke="#D4AF37" stroke-width="1.5" stroke-opacity="0.6"/>
+
+  <!-- Champagne glasses -->
+  <g transform="translate(350, 600)" stroke="#D4AF37" stroke-width="2" fill="none">
+    <!-- Left Glass -->
+    <path d="M0,0 C-15,30 -5,50 0,60 L0,95 M-15,95 L15,95 M0,0 L-10,0"/>
+    <!-- Right Glass tilted towards left -->
+    <path d="M100,0 C115,30 105,50 100,60 L100,95 M85,95 L115,95 M100,0 L110,0" transform="rotate(-15, 100, 60)"/>
+  </g>
+
+  <!-- Glowing candle in center -->
+  <rect x="390" y="580" width="20" height="90" rx="3" fill="#FDFBF7"/>
+  <circle cx="400" cy="550" r="70" fill="url(#candleGlow)"/>
+  <path d="M400,535 C392,550 395,565 400,575 C405,565 408,550 400,535 Z" fill="#FFA500"/>
+  <path d="M400,545 C396,555 398,565 400,570 C402,565 404,555 400,545 Z" fill="#FFF5AB"/>
+
+  <!-- Rose petals scattered -->
+  <g fill="#8B263E" opacity="0.8">
+    <ellipse cx="300" cy="730" rx="15" ry="9" transform="rotate(25 300 730)"/>
+    <ellipse cx="480" cy="740" rx="14" ry="8" transform="rotate(-35 480 740)"/>
+    <ellipse cx="380" cy="755" rx="12" ry="7" transform="rotate(10 380 755)"/>
+    <ellipse cx="450" cy="715" rx="16" ry="10" transform="rotate(45 450 715)"/>
+  </g>
+
+  <!-- Romantic Frame Border -->
+  <rect x="40" y="40" width="720" height="920" rx="20" fill="none" stroke="#D4AF37" stroke-width="1.5" stroke-opacity="0.4" stroke-dasharray="6,8"/>
+
+  <text x="400" y="250" font-family="'Playfair Display', Georgia, serif" font-size="34" font-style="italic" fill="#FDFBF7" text-anchor="middle">
+    « Des instants magiques à deux »
+  </text>
+  <text x="400" y="300" font-family="'Montserrat', sans-serif" font-size="14" fill="#D4AF37" text-anchor="middle" letter-spacing="3">
+    DÎNER ROMANTIQUE • LE TEMPS SUSPENDU
+  </text>
+</svg>

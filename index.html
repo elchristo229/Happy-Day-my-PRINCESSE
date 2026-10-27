@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="theme-color" content="#3D0C1A">
+  <meta name="description" content="Une expérience romantique, immersive et mémorable créée spécialement pour célébrer un anniversaire inoubliable.">
+  <meta property="og:title" content="Une surprise magique pour ton anniversaire ❤️">
+  <meta property="og:description" content="J'ai préparé quelque chose de très spécial rien que pour toi… Veux-tu le découvrir ?">
+  <meta property="og:type" content="website">
+
+  <title>Une Surprise Spéciale Pour Toi ❤️</title>
+
+  <!-- Google Fonts : Typographies Romantiques et Élégantes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+
+  <!-- Feuilles de Styles CSS Découplées et Optimisées -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- Canvas d'animation des particules d'arrière-plan (Cœurs, Étoiles, Pétales) -->
+  <canvas id="particles-canvas" aria-hidden="true"></canvas>
+
+  <!-- ========================================================================
+       BARRE DE NAVIGATION FLOTTANTE & COMMANDES MULTIMÉDIA
+       ======================================================================== -->
+  <header id="navbar-floating" class="navbar-floating" style="display: none;" role="banner">
+    <div class="nav-brand">
+      <span class="heart-icon" aria-hidden="true">❤️</span>
+      <span>Pour <span class="dyn-fiancee-pet">Mon Amour</span></span>
+    </div>
+
+    <nav aria-label="Navigation principale">
+      <ul id="nav-links" class="nav-links">
+        <li><a href="#countdown-section" class="nav-link">Compte à Rebours</a></li>
+        <li><a href="#story-section" class="nav-link">Notre Histoire</a></li>
+        <li><a href="#gallery-section" class="nav-link">Souvenirs</a></li>
+        <li><a href="#letter-section" class="nav-link">Lettre d'Amour</a></li>
+        <li><a href="#surprises-section" class="nav-link">Surprises</a></li>
+        <li><a href="#messages-section" class="nav-link">Livre d'Or</a></li>
+      </ul>
+    </nav>
+
+    <div class="nav-actions">
+      <!-- Lecteur Audio Romantique -->
+      <button id="music-toggle-btn" class="music-toggle-btn" type="button" aria-label="Écouter Joyeux anniversaire">
+        <span id="music-vinyl-icon" class="vinyl-icon" aria-hidden="true"></span>
+        <div id="music-soundwaves" class="soundwave-bars" aria-hidden="true">
+          <span class="soundwave-bar"></span>
+          <span class="soundwave-bar"></span>
+          <span class="soundwave-bar"></span>
+          <span class="soundwave-bar"></span>
+        </div>
+        <span id="music-status-label" class="sr-only">Joyeux anniversaire</span>
+      </button>
+
+      <!-- Pluie de pétales instantanée -->
+      <button id="petals-quick-btn" class="petals-quick-btn" type="button" title="Faire tomber des pétales de roses" aria-label="Déclencher une pluie de pétales">
+        🌸
+      </button>
+
+      <!-- Menu Mobile Hamburger -->
+      <button id="mobile-menu-toggle" class="mobile-menu-toggle" type="button" aria-label="Ouvrir le menu de navigation" aria-expanded="false">
+        ☰
+      </button>
+    </div>
+  </header>
+
+  <main id="app-root">
+
+    <!-- ========================================================================
+         ÉCRAN 1 : LE MYSTÈRE & LE JEU OUI / NON (FONCTIONNALITÉ PRIORITAIRE)
+         ======================================================================== -->
+    <section id="mystery-screen" class="screen-fullscreen" aria-label="Écran d'accueil interactif">
+      <div class="mystery-card">
+        <span class="mystery-badge">Surprise Spéciale</span>
+        
+        <h1 id="mystery-headline" class="mystery-headline">J'AI UNE SURPRISE POUR TOI</h1>
+        <p id="mystery-question" class="mystery-question">VEUX-TU LA VOIR ?</p>
+
+        <!-- Zone des boutons OUI / NON avec dynamique interactive -->
+        <div class="mystery-buttons-container">
+          <button id="btn-mystery-yes" class="btn-mystery-yes" type="button" aria-label="Oui, je veux voir la surprise">
+            OUI ❤️
+          </button>
+          
+          <button id="btn-mystery-no" class="btn-mystery-no" type="button" aria-label="Non, refuser">
+            NON 🙈
+          </button>
+        </div>
+
+        <!-- Réaction textuelle ludique mise à jour à chaque clic sur NON -->
+        <div id="playful-reaction" class="playful-reaction-text" aria-live="polite"></div>
+
+        <!-- Petite phrase rassurante -->
+        <p id="mystery-reassurance" class="mystery-reassurance">
+          Promis, cette surprise vient du fond de mon cœur…
+        </p>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         ÉCRAN 2 : LE DÉVOILEMENT SPECTACULAIRE
+         ======================================================================== -->
+    <section id="reveal-screen" class="screen-fullscreen" aria-label="Écran de dévoilement">
+      <div class="reveal-card">
+        <p id="reveal-intro" class="reveal-intro">
+          Cette surprise a été préparée spécialement pour toi…
+        </p>
+
+        <h2 id="reveal-fiancee-name" class="reveal-fiancee-name dyn-fiancee-name">
+          [PRÉNOM DE MA FIANCÉE]
+        </h2>
+
+        <p id="reveal-message" class="reveal-message-text">
+          En ce jour si précieux, chaque instant et chaque souvenir partagé brillent comme mille étoiles. 
+          Bienvenue dans cet univers conçu rien que pour célébrer ton bonheur et notre amour.
+        </p>
+
+        <button id="btn-discover-surprise" class="btn-cta-primary" type="button">
+          DÉCOUVRIR MA SURPRISE ❤️
+        </button>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         EXPÉRIENCE PRINCIPALE IMMERSIVE
+         ======================================================================== -->
+    <div id="main-experience" style="display: none;">
+
+      <!-- SECTION 1 : COMPTE À REBOURS DU 2 NOVEMBRE 2026 -->
+      <section id="countdown-section" class="section">
+        <div class="container">
+          <div class="section-header reveal-on-scroll">
+            <span class="section-tag">Date Précieuse</span>
+            <h2 class="section-title">En Route Vers Ton Anniversaire</h2>
+            <p class="section-subtitle">
+              Chaque seconde nous rapproche du 2 Novembre 2026, un jour béni où le ciel a fait don de ta présence au monde.
+            </p>
+          </div>
+
+          <!-- Grille du Compte à Rebours -->
+          <div id="countdown-grid" class="countdown-container reveal-on-scroll">
+            <div class="countdown-card">
+              <div id="countdown-days" class="countdown-number">00</div>
+              <div class="countdown-label">Jours</div>
+            </div>
+            <div class="countdown-card">
+              <div id="countdown-hours" class="countdown-number">00</div>
+              <div class="countdown-label">Heures</div>
+            </div>
+            <div class="countdown-card">
+              <div id="countdown-minutes" class="countdown-number">00</div>
+              <div class="countdown-label">Minutes</div>
+            </div>
+            <div class="countdown-card">
+              <div id="countdown-seconds" class="countdown-number">00</div>
+              <div class="countdown-label">Secondes</div>
+            </div>
+          </div>
+
+          <!-- Bannière de célébration active le jour J ou après -->
+          <div id="countdown-celebration" class="countdown-celebration-banner" role="region" aria-label="Célébration du Jour J">
+            <h3>🎉 C'EST AUJOURD'HUI ! JOYEUX ANNIVERSAIRE MON AMOUR ! ❤️</h3>
+            <p style="margin-top: 0.75rem; font-size: 1.15rem;">
+              Aujourd'hui, tous les cœurs et toutes les étoiles chantent pour toi. Que cette journée soit inoubliable !
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 2 : NOTRE HISTOIRE (CHRONOLOGIE DES MOMENTS CLÉS) -->
+      <section id="story-section" class="section">
+        <div class="container">
+          <div class="section-header reveal-on-scroll">
+            <span class="section-tag">Notre Chemin</span>
+            <h2 class="section-title">Les Chapitres de Notre Amour</h2>
+            <p class="section-subtitle">
+              Une rétrospective poétique des étapes qui ont tissé la beauté de notre relation.
+            </p>
+          </div>
+
+          <div id="timeline-wrapper" class="timeline-wrapper">
+            <!-- Injecté dynamiquement par surprises.js -->
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 3 : GALERIE PHOTOGRAPHIQUE STYLE POLAROID -->
+      <section id="gallery-section" class="section">
+        <div class="container">
+          <div class="section-header reveal-on-scroll">
+            <span class="section-tag">Souvenirs Gravés</span>
+            <h2 class="section-title">Nos Plus Beaux Instants</h2>
+            <p class="section-subtitle">
+              Chaque cliché est le témoin silencieux d'un regard complice, d'un fou rire ou d'un instant de tendresse infinie.
+            </p>
+          </div>
+
+          <!-- Grille des cartes Polaroid -->
+          <div id="gallery-grid" class="gallery-grid">
+            <!-- Injecté dynamiquement par gallery.js -->
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 4 : LETTRE D'AMOUR INTERACTIVE AVEC SCEAU DE CIRE 3D -->
+      <section id="letter-section" class="section">
+        <div class="container">
+          <div class="section-header reveal-on-scroll">
+            <span class="section-tag">Mots d'Amour</span>
+            <h2 class="section-title">Une Lettre Sortie du Cœur</h2>
+            <p class="section-subtitle">
+              Touche le sceau de cire doré pour briser le cachet et découvrir la lettre que j'ai écrite pour toi.
+            </p>
+          </div>
+
+          <!-- L'Enveloppe 3D -->
+          <div class="envelope-wrapper reveal-on-scroll">
+            <div id="envelope-3d" class="envelope-3d" tabindex="0" role="button" aria-label="Cliquer pour ouvrir l'enveloppe et lire la lettre d'amour">
+              <div id="envelope-flap-top" class="envelope-flap-top"></div>
+              <div class="envelope-flap-left"></div>
+              <div class="envelope-flap-right"></div>
+              <div class="envelope-flap-bottom"></div>
+
+              <!-- Sceau de cire interactif -->
+              <div id="wax-seal" class="wax-seal" title="Cliquer pour briser le sceau">
+                <span id="wax-seal-initials" class="wax-seal-initials">A&amp;M</span>
+              </div>
+            </div>
+
+            <!-- Parchemin de la Lettre dépliée -->
+            <article id="parchment-letter" class="parchment-letter" aria-label="Lettre d'amour personnelle">
+              <header class="parchment-header">
+                <span id="parchment-date" class="parchment-date">2 Novembre 2026</span>
+                <h3 id="parchment-heading" class="parchment-heading">À la femme de ma vie</h3>
+              </header>
+
+              <div class="parchment-body">
+                <div id="letter-sec-intro" class="parchment-section"></div>
+                <div id="letter-sec-love" class="parchment-section"></div>
+                <div id="letter-sec-memories" class="parchment-section"></div>
+                <div id="letter-sec-meaning" class="parchment-section"></div>
+                <div id="letter-sec-wishes" class="parchment-section"></div>
+                <div id="letter-sec-closing" class="parchment-section" style="font-weight: 600; color: #5C1D2E;"></div>
+              </div>
+
+              <div class="parchment-signature">
+                <p style="font-style: italic; color: #8C6D75; margin-bottom: 0.5rem;">Éternellement tien,</p>
+                <div id="parchment-signature-author" class="parchment-signature-text dyn-author-name">Ton Amour</div>
+              </div>
+
+              <p id="parchment-ps" style="margin-top: 1.5rem; font-size: 0.95rem; color: #8C6D75; font-style: italic;"></p>
+
+              <div class="parchment-actions">
+                <button id="btn-reread-letter" class="btn-cta-primary" type="button" style="padding: 0.75rem 1.8rem; font-size: 0.95rem;">
+                  Relire avec émotion ✨
+                </button>
+                <button id="btn-refold-letter" class="btn-mystery-no" type="button" style="padding: 0.75rem 1.8rem;">
+                  Replier l'enveloppe ✉️
+                </button>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 5 : SURPRISES CACHÉES & MOTS DOUX -->
+      <section id="surprises-section" class="section">
+        <div class="container">
+          <div class="section-header reveal-on-scroll">
+            <span class="section-tag">Petits Secrets</span>
+            <h2 class="section-title">Les Raisons Pour Lesquelles Je T'aime</h2>
+            <p class="section-subtitle">
+              Retourne chacune des cartes pour découvrir un des innombrables trésors qui me font t'aimer un peu plus chaque jour.
+            </p>
+          </div>
+
+          <!-- Cartes interactives des raisons -->
+          <div id="reasons-grid" class="reasons-grid">
+            <!-- Injecté dynamiquement par surprises.js -->
+          </div>
+
+          <!-- Bons d'Amour Virtuels -->
+          <div class="section-header reveal-on-scroll" style="margin-top: 5rem;">
+            <span class="section-tag">Privilèges d'Anniversaire</span>
+            <h2 class="section-title">Tes Bons d'Amour Exclusifs</h2>
+            <p class="section-subtitle">
+              Des privilèges romantiques valables sans date de péremption, à réclamer quand tu le souhaites !
+            </p>
+          </div>
+
+          <div id="coupons-grid" class="coupons-grid">
+            <!-- Injecté dynamiquement par surprises.js -->
+          </div>
+
+          <!-- Boutons Déclencheurs Festifs -->
+          <div style="display: flex; justify-content: center; gap: 1.5rem; margin-top: 4rem; flex-wrap: wrap;">
+            <button id="btn-trigger-petals" class="btn-cta-primary" type="button">
+              Pluie de Pétales de Roses 🌸
+            </button>
+            <button id="btn-trigger-confetti" class="btn-mystery-yes" type="button">
+              Explosion d'Amour & Confettis 🎉
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 6 : LIVRE D'OR / MUR DE MESSAGES ET DE VŒUX -->
+      <section id="messages-section" class="section">
+        <div class="container">
+          <div class="section-header reveal-on-scroll">
+            <span class="section-tag">Témoignages</span>
+            <h2 class="section-title">Le Mur des Vœux & Mots Doux</h2>
+            <p class="section-subtitle">
+              Les pensées chaleureuses, les bénédictions et les souhaits sincères de ceux qui te portent dans leur cœur.
+            </p>
+          </div>
+
+          <div class="guestbook-layout">
+            <div class="guestbook-display-column">
+              <!-- Liste des messages déjà présents -->
+              <div id="guestbook-messages-list" class="guestbook-messages-list" aria-label="Liste des vœux reçus">
+                <!-- Injecté dynamiquement par guestbook.js -->
+              </div>
+
+              <p id="guestbook-static-note" class="guestbook-static-note">
+                Ces mots doux ont été réunis à l’avance, avec le nom de chaque personne qui pense à toi. ❤️
+              </p>
+              <h3 class="guestbook-contributors-title">Les proches en images</h3>
+              <div id="guestbook-contributors" class="guestbook-contributors" aria-label="Photos des proches"></div>
+            </div>
+
+            <!-- Formulaire d'envoi de nouveau vœu -->
+            <div class="guestbook-form-card reveal-on-scroll">
+              <h3 class="guestbook-form-title">Laisser un message d'anniversaire</h3>
+              <p class="guestbook-form-subtitle">
+                Écris un mot tendre qui viendra enrichir ce mur de souvenirs.
+              </p>
+
+              <form id="guestbook-form" novalidate>
+                <!-- Champ anti-spam (honeypot masqué) -->
+                <div style="display: none;" aria-hidden="true">
+                  <label for="guestbook-website">Ne pas remplir ce champ</label>
+                  <input type="text" id="guestbook-website" name="website" tabindex="-1" autocomplete="off">
+                </div>
+
+                <div class="form-group">
+                  <label for="guestbook-author" class="form-label">Ton nom ou ton surnom *</label>
+                  <input type="text" id="guestbook-author" class="form-input" placeholder="Ex: Sarah, Maman, Ton frère..." required maxlength="60">
+                </div>
+
+                <div class="form-group">
+                  <label for="guestbook-relation" class="form-label">Lien de parenté / Amitié (facultatif)</label>
+                  <input type="text" id="guestbook-relation" class="form-input" placeholder="Ex: Fiancé, Meilleure amie, Famille..." maxlength="40">
+                </div>
+
+                <div class="form-group">
+                  <label for="guestbook-message" class="form-label">Ton message d'anniversaire *</label>
+                  <textarea id="guestbook-message" class="form-textarea" placeholder="Écris tes vœux chaleureux ici..." required maxlength="500"></textarea>
+                  <div id="guestbook-char-counter" class="char-counter">0 / 500</div>
+                </div>
+
+                <button id="btn-submit-wishes" class="btn-submit-wishes" type="submit">
+                  <span>Envoyer mon message avec amour</span>
+                  <span aria-hidden="true">❤️</span>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 7 : ÉCRAN FINAL & CÉLÉBRATION ROYALE -->
+      <section id="celebration-section" class="section celebration-hero">
+        <div class="container">
+          <div class="reveal-on-scroll">
+            <span class="section-tag" style="background: rgba(212, 175, 55, 0.3); border-color: var(--color-gold-light);">
+              Célébration Merveilleuse
+            </span>
+
+            <h2 id="celebration-title-text" class="celebration-title">
+              JOYEUX ANNIVERSAIRE <span class="dyn-fiancee-name">[PRÉNOM]</span> ❤️
+            </h2>
+
+            <p id="celebration-quote-text" class="celebration-quote">
+              « Merci d'exister et de faire de chaque instant un pur bonheur. Mon amour pour toi grandit de jour en jour. »
+            </p>
+
+            <div class="celebration-actions">
+              <button id="btn-final-memories" class="btn-cta-primary" type="button">
+                Revoir nos souvenirs 📸
+              </button>
+              <button id="btn-final-letter" class="btn-mystery-yes" type="button">
+                Relire la lettre d'amour 💌
+              </button>
+              <button id="btn-final-restart" class="btn-mystery-no" type="button">
+                Rejouer la surprise depuis le début 🔄
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PIED DE PAGE DISCRET & ÉLÉGANT -->
+      <footer style="text-align: center; padding: 3rem 1rem 4rem; color: var(--color-rose-powder-deep); font-size: 0.9rem; border-top: 1px solid rgba(212, 175, 55, 0.2);">
+        <p>Créé avec tout mon amour pour toi • 2 Novembre 2026</p>
+        <p style="margin-top: 0.4rem; font-size: 0.8rem; opacity: 0.75;">Pour toujours et à jamais ❤️</p>
+      </footer>
+
+    </div><!-- Fin main-experience -->
+
+  </main>
+
+  <!-- ========================================================================
+       VISIONNEUSE PLEIN ÉCRAN POUR LES PHOTOS (LIGHTBOX)
+       ======================================================================== -->
+  <div id="lightbox-modal" class="lightbox-modal" role="dialog" aria-modal="true" aria-label="Visionneuse de photo">
+    <div class="lightbox-content">
+      <button id="lightbox-close-btn" class="lightbox-btn lightbox-close-btn" type="button" aria-label="Fermer la visionneuse">✕</button>
+      <button id="lightbox-prev-btn" class="lightbox-btn lightbox-prev-btn" type="button" aria-label="Photo précédente">‹</button>
+      <button id="lightbox-next-btn" class="lightbox-btn lightbox-next-btn" type="button" aria-label="Photo suivante">›</button>
+
+      <div class="lightbox-image-container">
+        <img id="lightbox-image" src="assets/images/photo-1.svg" alt="" class="lightbox-image">
+      </div>
+
+      <div class="lightbox-info">
+        <p id="lightbox-caption" class="lightbox-caption"></p>
+        <p id="lightbox-date" class="lightbox-date"></p>
+        <p id="lightbox-counter" class="lightbox-counter"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Notification Toast -->
+  <div id="toast-notification" class="toast-notification" role="status" aria-live="polite">
+    <span aria-hidden="true">💌</span>
+    <span id="toast-message">Message envoyé avec succès !</span>
+  </div>
+
+  <!-- ========================================================================
+       CHARGEMENT DES SCRIPTS DANS L'ORDRE STRICT DE DÉPENDANCE
+       ======================================================================== -->
+  <script src="config.js"></script>
+  <script src="js/particles.js"></script>
+  <script src="js/music.js"></script>
+  <script src="js/mystery-game.js"></script>
+  <script src="js/countdown.js"></script>
+  <script src="js/envelope.js"></script>
+  <script src="js/gallery.js"></script>
+  <script src="js/surprises.js"></script>
+  <script src="js/guestbook.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
